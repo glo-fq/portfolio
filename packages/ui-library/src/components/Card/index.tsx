@@ -1,20 +1,21 @@
 import * as React from 'react';
 import styled from 'styled-components';
+import { LibraryThemeProvider } from '../../styles/LibraryThemeProvider';
 
-// Styled components
+// Styled Components
 const StyledCard = styled.div`
   border-radius: 0.5rem;
-  border: 1px solid var(--border-color);
-  background-color: var(--card-background);
-  color: var(--card-foreground);
-  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.1);
+  border: 1px solid ${({ theme }) => theme.colors.borderColor};
+  background-color: ${({ theme }) => theme.colors.cardBackground};
+  color: ${({ theme }) => theme.colors.cardForeground};
+  box-shadow: ${({ theme }) => theme.shadow.sm};
 `;
 
 const StyledCardHeader = styled.div`
   display: flex;
   flex-direction: column;
   gap: 0.375rem;
-  padding: 1.5rem;
+  padding: ${({ theme }) => theme.spacing.padding};
 `;
 
 const StyledCardTitle = styled.div`
@@ -26,18 +27,18 @@ const StyledCardTitle = styled.div`
 
 const StyledCardDescription = styled.div`
   font-size: 0.875rem;
-  color: var(--muted-foreground);
+  color: ${({ theme }) => theme.colors.mutedForeground};
 `;
 
 const StyledCardContent = styled.div`
-  padding: 1.5rem;
+  padding: ${({ theme }) => theme.spacing.padding};
   padding-top: 0;
 `;
 
 const StyledCardFooter = styled.div`
   display: flex;
   align-items: center;
-  padding: 1.5rem;
+  padding: ${({ theme }) => theme.spacing.padding};
   padding-top: 0;
 `;
 
@@ -45,56 +46,80 @@ const StyledCardFooter = styled.div`
 const Card = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <StyledCard ref={ref} className={className} {...props} />
+>(({ children, ...props }, ref) => (
+  <LibraryThemeProvider>
+    <StyledCard ref={ref} {...props}>
+      {children}
+    </StyledCard>
+  </LibraryThemeProvider>
 ));
 Card.displayName = 'Card';
 
 const CardHeader = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <StyledCardHeader ref={ref} className={className} {...props} />
+>(({ children, ...props }, ref) => (
+  <LibraryThemeProvider>
+    <StyledCardHeader ref={ref} {...props}>
+      {children}
+    </StyledCardHeader>
+  </LibraryThemeProvider>
 ));
 CardHeader.displayName = 'CardHeader';
 
 const CardTitle = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <StyledCardTitle ref={ref} className={className} {...props} />
+>(({ children, ...props }, ref) => (
+  <LibraryThemeProvider>
+    <StyledCardTitle ref={ref} {...props}>
+      {children}
+    </StyledCardTitle>
+  </LibraryThemeProvider>
 ));
 CardTitle.displayName = 'CardTitle';
 
 const CardDescription = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <StyledCardDescription ref={ref} className={className} {...props} />
+>(({ children, ...props }, ref) => (
+  <LibraryThemeProvider>
+    <StyledCardDescription ref={ref} {...props}>
+      {children}
+    </StyledCardDescription>
+  </LibraryThemeProvider>
 ));
 CardDescription.displayName = 'CardDescription';
 
 const CardContent = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <StyledCardContent ref={ref} className={className} {...props} />
+>(({ children, ...props }, ref) => (
+  <LibraryThemeProvider>
+    <StyledCardContent ref={ref} {...props}>
+      {children}
+    </StyledCardContent>
+  </LibraryThemeProvider>
 ));
 CardContent.displayName = 'CardContent';
 
 const CardFooter = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <StyledCardFooter ref={ref} className={className} {...props} />
+>(({ children, ...props }, ref) => (
+  <LibraryThemeProvider>
+    <StyledCardFooter ref={ref} {...props}>
+      {children}
+    </StyledCardFooter>
+  </LibraryThemeProvider>
 ));
 CardFooter.displayName = 'CardFooter';
 
 export {
   Card,
   CardHeader,
+  CardFooter,
   CardTitle,
   CardDescription,
   CardContent,
-  CardFooter,
 };

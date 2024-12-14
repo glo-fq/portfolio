@@ -1,132 +1,136 @@
 import * as React from 'react';
-import { Slot } from '@radix-ui/react-slot';
 import styled, { css } from 'styled-components';
+import { LibraryThemeProvider } from '../../styles/LibraryThemeProvider';
 
+// Styled Components
+const variantStyles = {
+  default: css`
+    background-color: ${({ theme }) => theme.colors.primary};
+    color: ${({ theme }) => theme.colors.primaryForeground};
+    &:hover {
+      background-color: hsl(${({ theme }) => theme.colors.primary} / 0.9);
+    }
+  `,
+  destructive: css`
+    background-color: ${({ theme }) => theme.colors.destructive};
+    color: ${({ theme }) => theme.colors.destructiveForeground};
+    &:hover {
+      background-color: hsl(${({ theme }) => theme.colors.destructive} / 0.9);
+    }
+  `,
+  outline: css`
+    background-color: ${({ theme }) => theme.colors.background};
+    border: 1px solid ${({ theme }) => theme.colors.inputBorder};
+    &:hover {
+      background-color: ${({ theme }) => theme.colors.accent};
+      color: ${({ theme }) => theme.colors.accentForeground};
+    }
+  `,
+  secondary: css`
+    background-color: ${({ theme }) => theme.colors.secondary};
+    color: ${({ theme }) => theme.colors.secondaryForeground};
+    &:hover {
+      background-color: hsl(${({ theme }) => theme.colors.secondary} / 0.8);
+    }
+  `,
+  ghost: css`
+    &:hover {
+      background-color: ${({ theme }) => theme.colors.accent};
+      color: ${({ theme }) => theme.colors.accentForeground};
+    }
+  `,
+  link: css`
+    color: ${({ theme }) => theme.colors.primary};
+    text-decoration: underline;
+    &:hover {
+      text-decoration: none;
+    }
+  `,
+};
+
+const sizeStyles = {
+  default: css`
+    height: 2.5rem;
+    padding: 0 1rem;
+    font-size: ${({ theme }) => theme.fontSizes.sm};
+  `,
+  sm: css`
+    height: 2.25rem;
+    padding: 0 0.75rem;
+    border-radius: 0.375rem;
+  `,
+  lg: css`
+    height: 2.75rem;
+    padding: 0 2rem;
+  `,
+  icon: css`
+    height: 2.5rem;
+    width: 2.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  `,
+};
+
+const StyledButton = styled.button<{
+  variant: keyof typeof variantStyles;
+  size: keyof typeof sizeStyles;
+}>`
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  white-space: nowrap;
+  border-radius: ${({ theme }) => theme.radius.md};
+  font-weight: 500;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+  ${({ variant }) => variantStyles[variant]};
+  ${({ size }) => sizeStyles[size]};
+  &:focus-visible {
+    outline: 2px solid ${({ theme }) => theme.colors.focusRing};
+    outline-offset: 2px;
+  }
+  &:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+`;
+
+// Button Component
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?:
-    | 'default'
-    | 'destructive'
-    | 'outline'
-    | 'secondary'
-    | 'ghost'
-    | 'link';
-  size?: 'default' | 'sm' | 'lg' | 'icon';
+  variant?: keyof typeof variantStyles;
+  size?: keyof typeof sizeStyles;
   asChild?: boolean;
 }
 
-const buttonStyles = {
-  base: css`
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    white-space: nowrap;
-    border-radius: 0.375rem;
-    font-size: 0.875rem;
-    font-weight: 500;
-    line-height: 1.25rem;
-    transition:
-      background-color 0.2s,
-      color 0.2s;
-    &:focus-visible {
-      outline: none;
-      box-shadow:
-        0 0 0 2px var(--ring-color),
-        0 0 0 4px var(--ring-offset-color);
-    }
-    &:disabled {
-      pointer-events: none;
-      opacity: 0.5;
-    }
-    svg {
-      pointer-events: none;
-      width: 1rem;
-      height: 1rem;
-      flex-shrink: 0;
-    }
-  `,
-  variants: {
-    default: css`
-      background-color: var(--primary);
-      color: var(--primary-foreground);
-      &:hover {
-        background-color: var(--primary-hover);
-      }
-    `,
-    destructive: css`
-      background-color: var(--destructive);
-      color: var(--destructive-foreground);
-      &:hover {
-        background-color: var(--destructive-hover);
-      }
-    `,
-    outline: css`
-      border: 1px solid var(--input);
-      background-color: var(--background);
-      &:hover {
-        background-color: var(--accent);
-        color: var(--accent-foreground);
-      }
-    `,
-    secondary: css`
-      background-color: var(--secondary);
-      color: var(--secondary-foreground);
-      &:hover {
-        background-color: var(--secondary-hover);
-      }
-    `,
-    ghost: css`
-      background-color: transparent;
-      &:hover {
-        background-color: var(--accent);
-        color: var(--accent-foreground);
-      }
-    `,
-    link: css`
-      background-color: transparent;
-      text-decoration: underline;
-      &:hover {
-        text-decoration: none;
-      }
-    `,
-  },
-  sizes: {
-    default: css`
-      height: 2.5rem;
-      padding: 0 1rem;
-    `,
-    sm: css`
-      height: 2.25rem;
-      border-radius: 0.375rem;
-      padding: 0 0.75rem;
-    `,
-    lg: css`
-      height: 2.75rem;
-      border-radius: 0.5rem;
-      padding: 0 2rem;
-    `,
-    icon: css`
-      height: 2.5rem;
-      width: 2.5rem;
-      padding: 0;
-    `,
-  },
-};
-
-const StyledButton = styled.button<ButtonProps>`
-  ${buttonStyles.base}
-  ${({ variant }) => buttonStyles.variants[variant || 'default']}
-  ${({ size }) => buttonStyles.sizes[size || 'default']}
-`;
-
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
-    { variant = 'default', size = 'default', asChild = false, ...props },
+    {
+      variant = 'default',
+      size = 'default',
+      asChild = false,
+      children,
+      ...props
+    },
     ref
   ) => {
-    const Comp = asChild ? Slot : StyledButton;
-    return <Comp ref={ref} variant={variant} size={size} {...props} />;
+    const Comp = asChild ? 'span' : 'button';
+    return (
+      <LibraryThemeProvider>
+        <StyledButton
+          as={Comp}
+          ref={ref}
+          variant={variant}
+          size={size}
+          {...props}
+        >
+          {children}
+        </StyledButton>
+      </LibraryThemeProvider>
+    );
   }
 );
 Button.displayName = 'Button';

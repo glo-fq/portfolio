@@ -1,74 +1,89 @@
 import * as React from 'react';
 import styled, { css } from 'styled-components';
+import { LibraryThemeProvider } from '../../styles/LibraryThemeProvider';
 
-interface AlertProps extends React.HTMLAttributes<HTMLDivElement> {
-  variant?: 'default' | 'destructive';
-}
+// Styled Components
+const StyledAlert = styled.div<{ variant: 'default' | 'destructive' }>`
+  position: relative;
+  width: 100%;
+  border-radius: 0.5rem;
+  border: 1px solid;
+  padding: 1rem;
+  ${({ variant, theme }) =>
+    variant === 'default'
+      ? css`
+          background-color: ${theme.colors.background};
+          color: ${theme.colors.foreground};
+          border-color: ${theme.colors.border};
+        `
+      : css`
+          background-color: ${theme.colors.destructiveBackground};
+          color: ${theme.colors.destructiveForeground};
+          border-color: ${theme.colors.destructive};
+        `}
 
-const alertStyles = {
-  base: css`
-    position: relative;
-    width: 100%;
-    border-radius: 0.5rem;
-    border: 1px solid;
-    padding: 1rem;
+  & > svg {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    color: ${({ variant, theme }) =>
+      variant === 'default'
+        ? theme.colors.foreground
+        : theme.colors.destructive};
+  }
 
-    svg ~ * {
-      padding-left: 1.75rem;
-    }
+  & > svg ~ * {
+    padding-left: 1.75rem;
+  }
 
-    svg + div {
-      transform: translateY(-3px);
-    }
-
-    svg {
-      position: absolute;
-      left: 1rem;
-      top: 1rem;
-      color: var(--foreground-color);
-    }
-  `,
-  variants: {
-    default: css`
-      background-color: var(--background-color);
-      color: var(--foreground-color);
-    `,
-    destructive: css`
-      border-color: rgba(var(--destructive-color), 0.5);
-      color: var(--destructive-color);
-
-      svg {
-        color: var(--destructive-color);
-      }
-    `,
-  },
-};
-
-const StyledAlert = styled.div<AlertProps>`
-  ${alertStyles.base}
-  ${({ variant = 'default' }) => alertStyles.variants[variant]}
+  & > svg + div {
+    transform: translateY(-3px);
+  }
 `;
 
-const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
-  ({ variant = 'default', ...props }, ref) => (
-    <StyledAlert ref={ref} variant={variant} role="alert" {...props} />
-  )
-);
-Alert.displayName = 'Alert';
-
-const AlertTitle = styled.h5`
+const StyledAlertTitle = styled.h5`
   margin-bottom: 0.25rem;
   font-weight: 500;
   line-height: 1;
   letter-spacing: -0.015em;
 `;
 
-const AlertDescription = styled.div`
+const StyledAlertDescription = styled.div`
   font-size: 0.875rem;
-
-  p {
+  & > p {
     line-height: 1.5;
   }
 `;
+
+// Components
+const Alert = React.forwardRef<
+  HTMLDivElement,
+  React.HTMLAttributes<HTMLDivElement> & { variant?: 'default' | 'destructive' }
+>(({ className, variant = 'default', ...props }, ref) => (
+  <LibraryThemeProvider>
+    <StyledAlert ref={ref} variant={variant} className={className} {...props} />
+  </LibraryThemeProvider>
+));
+Alert.displayName = 'Alert';
+
+const AlertTitle = React.forwardRef<
+  HTMLParagraphElement,
+  React.HTMLAttributes<HTMLHeadingElement>
+>(({ className, ...props }, ref) => (
+  <LibraryThemeProvider>
+    <StyledAlertTitle ref={ref} className={className} {...props} />
+  </LibraryThemeProvider>
+));
+AlertTitle.displayName = 'AlertTitle';
+
+const AlertDescription = React.forwardRef<
+  HTMLParagraphElement,
+  React.HTMLAttributes<HTMLParagraphElement>
+>(({ className, ...props }, ref) => (
+  <LibraryThemeProvider>
+    <StyledAlertDescription ref={ref} className={className} {...props} />
+  </LibraryThemeProvider>
+));
+AlertDescription.displayName = 'AlertDescription';
 
 export { Alert, AlertTitle, AlertDescription };

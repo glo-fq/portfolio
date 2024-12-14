@@ -14,28 +14,42 @@ export default function Home() {
   return (
     <div
       style={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
+        width: '100vw',
         height: '100vh',
+        alignItems: 'center',
+        justifyContent: 'center',
+        display: 'flex',
+        flexDirection: 'row',
       }}
     >
-      <Carousel className="w-full max-w-xs">
+      <Carousel style={{ width: '100%', maxWidth: '20rem' }}>
         <CarouselContent>
           {Array.from({ length: 5 }).map((_, index) => (
             <CarouselItem key={index}>
-              <div className="p-1">
+              <div style={{ padding: '0.25rem' }}>
                 <Card>
-                  <CardContent className="flex aspect-square items-center justify-center p-6">
-                    <span className="text-4xl font-semibold">{index + 1}</span>
+                  <CardContent
+                    style={{
+                      display: 'flex',
+                      aspectRatio: '1/1',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      padding: '1.5rem',
+                    }}
+                  >
+                    <span style={{ fontSize: '2.25rem', fontWeight: '600' }}>
+                      {index + 1}
+                    </span>
                   </CardContent>
                 </Card>
               </div>
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious />
-        <CarouselNext />
+        <div>
+          <CarouselPrevious />
+          <CarouselNext />
+        </div>
       </Carousel>
     </div>
   );
