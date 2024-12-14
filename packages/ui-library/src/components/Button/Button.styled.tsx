@@ -1,18 +1,19 @@
 import styled, { css } from 'styled-components';
+import { rgba } from 'polished';
 
 export const variantStyles = {
   default: css`
     background-color: ${({ theme }) => theme.colors.primary};
     color: ${({ theme }) => theme.colors.primaryForeground};
     &:hover {
-      background-color: hsl(${({ theme }) => theme.colors.primary} / 0.9);
+      background-color: ${({ theme }) => rgba(theme.colors.primary, 0.9)};
     }
   `,
   destructive: css`
     background-color: ${({ theme }) => theme.colors.destructive};
     color: ${({ theme }) => theme.colors.destructiveForeground};
     &:hover {
-      background-color: hsl(${({ theme }) => theme.colors.destructive} / 0.9);
+      background-color: ${({ theme }) => rgba(theme.colors.destructive, 0.9)};
     }
   `,
   outline: css`
@@ -27,7 +28,7 @@ export const variantStyles = {
     background-color: ${({ theme }) => theme.colors.secondary};
     color: ${({ theme }) => theme.colors.secondaryForeground};
     &:hover {
-      background-color: hsl(${({ theme }) => theme.colors.secondary} / 0.8);
+      background-color: ${({ theme }) => rgba(theme.colors.secondary, 0.8)};
     }
   `,
   ghost: css`

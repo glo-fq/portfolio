@@ -12,6 +12,7 @@ import {
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
+  Skeleton,
 } from '@portfolio/ui-library';
 
 export default function Home() {
@@ -65,6 +66,7 @@ export default function Home() {
           </AlertDescription>
         </Alert>
       </div>
+      <Skeleton height="50px" width="50px" />
     </div>
   );
 }

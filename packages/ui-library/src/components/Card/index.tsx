@@ -9,7 +9,6 @@ import {
   StyledCardFooter,
 } from './Card.styled';
 
-// Components
 const Card = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement>

@@ -15,3 +15,4 @@ export {
   CardContent,
   CardFooter,
 } from './Card';
+export { Skeleton } from './Skeleton';

@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import useEmblaCarousel, {
   type UseEmblaCarouselType,
 } from 'embla-carousel-react';
@@ -10,6 +10,7 @@ import {
   CarouselItemWrapper,
   ButtonStyled,
 } from './Carousel.styled';
+import { CarouselContext, useCarousel } from '../../context/CarouselContext';
 
 type CarouselApi = UseEmblaCarouselType[1];
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>;
@@ -23,20 +24,6 @@ type CarouselProps = {
   setApi?: (api: CarouselApi) => void;
 };
 
-// Context for Carousel
-const CarouselContext = React.createContext<any>(null);
-
-function useCarousel() {
-  const context = React.useContext(CarouselContext);
-
-  if (!context) {
-    throw new Error('useCarousel must be used within a <Carousel />');
-  }
-
-  return context;
-}
-
-// Main Carousel Component
 const Carousel = React.forwardRef<
   HTMLDivElement,
   React.HTMLAttributes<HTMLDivElement> & CarouselProps
@@ -57,21 +44,21 @@ const Carousel = React.forwardRef<
       { ...opts, axis: orientation === 'horizontal' ? 'x' : 'y' },
       plugins
     );
-    const [canScrollPrev, setCanScrollPrev] = React.useState(false);
-    const [canScrollNext, setCanScrollNext] = React.useState(false);
+    const [canScrollPrev, setCanScrollPrev] = useState(false);
+    const [canScrollNext, setCanScrollNext] = useState(false);
 
-    const onSelect = React.useCallback((api: CarouselApi) => {
+    const onSelect = useCallback((api: CarouselApi) => {
       if (!api) return;
       setCanScrollPrev(api.canScrollPrev());
       setCanScrollNext(api.canScrollNext());
     }, []);
 
-    React.useEffect(() => {
+    useEffect(() => {
       if (!api || !setApi) return;
       setApi(api);
     }, [api, setApi]);
 
-    React.useEffect(() => {
+    useEffect(() => {
       if (!api) return;
       onSelect(api);
       api.on('reInit', onSelect);
@@ -82,8 +69,8 @@ const Carousel = React.forwardRef<
       };
     }, [api, onSelect]);
 
-    const scrollPrev = React.useCallback(() => api?.scrollPrev(), [api]);
-    const scrollNext = React.useCallback(() => api?.scrollNext(), [api]);
+    const scrollPrev = useCallback(() => api?.scrollPrev(), [api]);
+    const scrollNext = useCallback(() => api?.scrollNext(), [api]);
 
     return (
       <CarouselContext.Provider
