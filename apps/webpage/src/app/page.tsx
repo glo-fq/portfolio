@@ -1,6 +1,14 @@
-'use client'
+'use client';
 
-import { Button } from '@portfolio/ui-library';
+import {
+  Card,
+  CardContent,
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from '@portfolio/ui-library';
 
 export default function Home() {
   return (
@@ -12,7 +20,23 @@ export default function Home() {
         height: '100vh',
       }}
     >
-      <Button label="Website under construction" />
+      <Carousel className="w-full max-w-xs">
+        <CarouselContent>
+          {Array.from({ length: 5 }).map((_, index) => (
+            <CarouselItem key={index}>
+              <div className="p-1">
+                <Card>
+                  <CardContent className="flex aspect-square items-center justify-center p-6">
+                    <span className="text-4xl font-semibold">{index + 1}</span>
+                  </CardContent>
+                </Card>
+              </div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+        <CarouselPrevious />
+        <CarouselNext />
+      </Carousel>
     </div>
   );
 }

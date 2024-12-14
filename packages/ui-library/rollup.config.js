@@ -21,4 +21,5 @@ export default {
       useTsconfigDeclarationDir: true,
     }),
   ],
+  external: ['lucide-react'],
 };
