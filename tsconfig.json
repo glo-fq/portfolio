@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "strict": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "declaration": true,
+    "declarationMap": true,
+    "declarationDir": "./dist",
+    "jsx": "react",
+    "baseUrl": ".",
+    "paths": {
+      "@portfolio/ui-library": ["packages/ui-library/src"]
+    }
+  },
+  "include": [],
+  "exclude": ["node_modules", "dist"]
+}
