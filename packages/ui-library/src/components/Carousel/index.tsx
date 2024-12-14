@@ -1,10 +1,15 @@
 import * as React from 'react';
-import styled, { css } from 'styled-components';
 import useEmblaCarousel, {
   type UseEmblaCarouselType,
 } from 'embla-carousel-react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
-import { Button } from '../Button';
+import {
+  CarouselWrapper,
+  CarouselContentWrapper,
+  CarouselContentContainer,
+  CarouselItemWrapper,
+  ButtonStyled,
+} from './Carousel.styled';
 
 type CarouselApi = UseEmblaCarouselType[1];
 type UseCarouselParameters = Parameters<typeof useEmblaCarousel>;
@@ -17,79 +22,6 @@ type CarouselProps = {
   orientation?: 'horizontal' | 'vertical';
   setApi?: (api: CarouselApi) => void;
 };
-
-// Styled Components
-const CarouselWrapper = styled.div`
-  position: relative;
-`;
-
-const CarouselContentWrapper = styled.div`
-  overflow: hidden;
-`;
-
-const CarouselContentContainer = styled.div<{
-  orientation: 'horizontal' | 'vertical';
-}>`
-  display: flex;
-  ${({ orientation }) =>
-    orientation === 'horizontal'
-      ? css`
-          margin-left: -1rem;
-        `
-      : css`
-          margin-top: -1rem;
-          flex-direction: column;
-        `}
-`;
-
-const CarouselItemWrapper = styled.div<{
-  orientation: 'horizontal' | 'vertical';
-}>`
-  flex-shrink: 0;
-  flex-grow: 0;
-  flex-basis: 100%;
-  ${({ orientation }) =>
-    orientation === 'horizontal'
-      ? css`
-          padding-left: 1rem;
-        `
-      : css`
-          padding-top: 1rem;
-        `}
-`;
-
-const ButtonStyled = styled(Button)<{ orientation: 'horizontal' | 'vertical' }>`
-  position: absolute;
-  height: 2rem;
-  width: 2rem;
-  border-radius: 50%;
-  ${({ orientation }) =>
-    orientation === 'horizontal'
-      ? css`
-          &:nth-child(1) {
-            left: -3rem;
-            top: 50%;
-            transform: translateY(-50%);
-          }
-          &:nth-child(2) {
-            right: -3rem;
-            top: 50%;
-            transform: translateY(-50%);
-          }
-        `
-      : css`
-          &:nth-child(1) {
-            top: -3rem;
-            left: 50%;
-            transform: translateX(-50%) rotate(90deg);
-          }
-          &:nth-child(2) {
-            bottom: -3rem;
-            left: 50%;
-            transform: translateX(-50%) rotate(90deg);
-          }
-        `}
-`;
 
 // Context for Carousel
 const CarouselContext = React.createContext<any>(null);

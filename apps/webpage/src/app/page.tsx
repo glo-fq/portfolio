@@ -1,6 +1,10 @@
 'use client';
 
 import {
+  Alert,
+  AlertDescription,
+  AlertTitle,
+  Button,
   Card,
   CardContent,
   Carousel,
@@ -19,9 +23,11 @@ export default function Home() {
         alignItems: 'center',
         justifyContent: 'center',
         display: 'flex',
-        flexDirection: 'row',
+        flexDirection: 'column',
+        gap: '1rem',
       }}
     >
+      <Button>{'Hello world!'}</Button>
       <Carousel style={{ width: '100%', maxWidth: '20rem' }}>
         <CarouselContent>
           {Array.from({ length: 5 }).map((_, index) => (
@@ -51,6 +57,14 @@ export default function Home() {
           <CarouselNext />
         </div>
       </Carousel>
+      <div>
+        <Alert>
+          <AlertTitle>Heads up!</AlertTitle>
+          <AlertDescription>
+            You can add components to your app using the cli.
+          </AlertDescription>
+        </Alert>
+      </div>
     </div>
   );
 }
