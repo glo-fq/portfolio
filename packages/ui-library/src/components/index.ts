@@ -26,3 +26,4 @@ export {
   PaginationNext,
   PaginationPrevious,
 } from './Pagination';
+export { Typography } from './Typography';

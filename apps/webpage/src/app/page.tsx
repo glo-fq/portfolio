@@ -23,6 +23,7 @@ import {
   PaginationNext,
   PaginationPrevious,
   Skeleton,
+  Typography,
 } from '@portfolio/ui-library';
 
 export default function Home() {
@@ -105,6 +106,7 @@ export default function Home() {
           </PaginationItem>
         </PaginationContent>
       </Pagination>
+      <Typography variant="h1">Hello world!</Typography>
     </div>
   );
 }
