@@ -1,9 +1,9 @@
 export const defaultTheme = {
   colors: {
-    background: 'rgba(10, 10, 10, 1)',
+    background: 'rgba(9, 9, 11, 1)',
     foreground: 'rgba(250, 250, 250, 1)',
 
-    card: 'rgba(10, 10, 10, 1)',
+    card: 'rgba(9, 9, 11, 1)',
     cardForeground: 'rgba(250, 250, 250, 1)',
 
     popover: 'rgba(10, 10, 10, 1)',
@@ -24,7 +24,7 @@ export const defaultTheme = {
     destructive: 'rgba(200, 0, 0, 1)',
     destructiveForeground: 'rgba(255, 230, 230, 1)',
 
-    border: 'rgba(20, 20, 20, 1)',
+    border: 'rgba(39, 39, 42, 1)',
     input: 'rgba(20, 20, 20, 1)',
     ring: 'rgba(100, 100, 100, 1)',
 
