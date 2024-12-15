@@ -16,3 +16,4 @@ export {
   CardFooter,
 } from './Card';
 export { Skeleton } from './Skeleton';
+export { Avatar, AvatarImage, AvatarFallback } from './Avatar';

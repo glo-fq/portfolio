@@ -4,6 +4,9 @@ import {
   Alert,
   AlertDescription,
   AlertTitle,
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
   Button,
   Card,
   CardContent,
@@ -67,6 +70,10 @@ export default function Home() {
         </Alert>
       </div>
       <Skeleton height="50px" width="50px" />
+      <Avatar>
+        <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+        <AvatarFallback>CN</AvatarFallback>
+      </Avatar>
     </div>
   );
 }
