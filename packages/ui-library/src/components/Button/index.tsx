@@ -1,11 +1,6 @@
-import * as React from 'react';
+import React from 'react';
 import { Slot } from '@radix-ui/react-slot';
-import {
-  ButtonVariant,
-  sizeStyles,
-  StyledButton,
-  variantStyles,
-} from './Button.styled';
+import { ButtonVariant, sizeStyles, StyledButton } from './Button.styled';
 import { LibraryThemeProvider } from '../../styles/LibraryThemeProvider';
 
 export interface ButtonProps
