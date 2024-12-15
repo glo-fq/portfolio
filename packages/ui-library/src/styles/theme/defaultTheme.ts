@@ -10,7 +10,7 @@ export const defaultTheme = {
     popoverForeground: 'rgba(250, 250, 250, 1)',
 
     primary: 'rgba(250, 250, 250, 1)',
-    primaryForeground: 'rgba(26, 26, 26, 1)',
+    primaryForeground: 'rgba(24, 26, 27, 1)',
 
     secondary: 'rgba(20, 20, 20, 1)',
     secondaryForeground: 'rgba(250, 250, 250, 1)',
