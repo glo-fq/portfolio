@@ -1,0 +1,7 @@
+{
+  "extends": ["eslint:recommended", "plugin:prettier/recommended", "google"],
+  "plugins": ["prettier"],
+  "rules": {
+    "prettier/prettier": "error"
+  }
+}
