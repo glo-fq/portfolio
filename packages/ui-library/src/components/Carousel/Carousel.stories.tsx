@@ -7,6 +7,7 @@ import {
   CarouselPrevious,
   CarouselNext,
 } from './index';
+import { Card, CardContent } from '../Card';
 
 export default {
   title: 'Components/Carousel',
@@ -30,19 +31,21 @@ const Template: StoryFn = (args) => (
         {Array.from({ length: 5 }).map((_, index) => (
           <CarouselItem key={index}>
             <div style={{ padding: '0.25rem' }}>
-              <div
-                style={{
-                  display: 'flex',
-                  aspectRatio: '1/1',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  padding: '1.5rem',
-                }}
-              >
-                <span style={{ fontSize: '2.25rem', fontWeight: '600' }}>
-                  {index + 1}
-                </span>
-              </div>
+              <Card>
+                <CardContent
+                  style={{
+                    display: 'flex',
+                    aspectRatio: '1/1',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    padding: '1.5rem',
+                  }}
+                >
+                  <span style={{ fontSize: '2.25rem', fontWeight: '600' }}>
+                    {index + 1}
+                  </span>
+                </CardContent>
+              </Card>
             </div>
           </CarouselItem>
         ))}
