@@ -1,37 +1,42 @@
 import * as React from 'react';
+import { Slot } from '@radix-ui/react-slot';
+import {
+  ButtonVariant,
+  sizeStyles,
+  StyledButton,
+  variantStyles,
+} from './Button.styled';
 import { LibraryThemeProvider } from '../../styles/LibraryThemeProvider';
-import { variantStyles, sizeStyles, StyledButton } from './Button.styled';
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: keyof typeof variantStyles;
-  size?: keyof typeof sizeStyles;
   asChild?: boolean;
+  variant?: ButtonVariant;
+  size?: keyof typeof sizeStyles;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   (
     {
-      variant = 'default',
+      className,
+      variant = ButtonVariant.Default,
       size = 'default',
       asChild = false,
-      children,
       ...props
     },
     ref
   ) => {
-    const Comp = asChild ? 'span' : 'button';
+    const Comp = asChild ? Slot : 'button';
     return (
       <LibraryThemeProvider>
         <StyledButton
           as={Comp}
           ref={ref}
-          variant={variant}
-          size={size}
+          $variant={variant}
+          $size={size}
+          className={className}
           {...props}
-        >
-          {children}
-        </StyledButton>
+        />
       </LibraryThemeProvider>
     );
   }
