@@ -1,6 +1,28 @@
 import styled from 'styled-components';
 
-export const TypographyH1Styled = styled.h1`
+const baseTypographyStyles = styled.div<{
+  color?: string;
+  align?: 'left' | 'center' | 'right' | 'justify';
+  weight?: string;
+  margin?: string;
+  padding?: string;
+  lineHeight?: string;
+  letterSpacing?: string;
+  decoration?: string;
+}>`
+  color: ${({ color }) => color || 'inherit'};
+  text-align: ${({ align }) => align || 'inherit'};
+  font-weight: ${({ weight }) => weight || 'inherit'};
+  margin: ${({ margin }) => margin || '0'};
+  padding: ${({ padding }) => padding || '0'};
+  line-height: ${({ lineHeight }) => lineHeight || 'inherit'};
+  letter-spacing: ${({ letterSpacing }) => letterSpacing || 'inherit'};
+  text-decoration: ${({ decoration }) => decoration || 'none'};
+`;
+
+export const TypographyH1Styled = styled(baseTypographyStyles).attrs({
+  as: 'h1',
+})`
   scroll-margin-top: 20px;
   font-size: 2.25rem;
   font-weight: 800;
@@ -11,7 +33,9 @@ export const TypographyH1Styled = styled.h1`
   }
 `;
 
-export const TypographyH2Styled = styled.h2`
+export const TypographyH2Styled = styled(baseTypographyStyles).attrs({
+  as: 'h2',
+})`
   scroll-margin-top: 20px;
   border-bottom: 1px solid ${({ theme }) => theme.colors.border};
   padding-bottom: 0.5rem;
@@ -21,35 +45,45 @@ export const TypographyH2Styled = styled.h2`
   margin-top: 0;
 `;
 
-export const TypographyH3Styled = styled.h3`
+export const TypographyH3Styled = styled(baseTypographyStyles).attrs({
+  as: 'h3',
+})`
   scroll-margin-top: 20px;
   font-size: 1.5rem;
   font-weight: 600;
   line-height: 1.1;
 `;
 
-export const TypographyH4Styled = styled.h4`
+export const TypographyH4Styled = styled(baseTypographyStyles).attrs({
+  as: 'h4',
+})`
   scroll-margin-top: 20px;
   font-size: 1.25rem;
   font-weight: 600;
   line-height: 1.1;
 `;
 
-export const TypographyPStyled = styled.p`
+export const TypographyPStyled = styled(baseTypographyStyles).attrs({
+  as: 'p',
+})`
   line-height: 1.75;
   &:not(:first-child) {
     margin-top: 1.5rem;
   }
 `;
 
-export const TypographyBlockquoteStyled = styled.blockquote`
+export const TypographyBlockquoteStyled = styled(baseTypographyStyles).attrs({
+  as: 'blockquote',
+})`
   margin-top: 1.5rem;
   border-left: 2px solid ${({ theme }) => theme.colors.border};
   padding-left: 1.5rem;
   font-style: italic;
 `;
 
-export const TypographyTableStyled = styled.div`
+export const TypographyTableStyled = styled(baseTypographyStyles).attrs({
+  as: 'div',
+})`
   margin-top: 1.5rem;
   width: 100%;
   overflow-y: auto;
@@ -101,7 +135,9 @@ export const TypographyTableStyled = styled.div`
   }
 `;
 
-export const TypographyListStyled = styled.ul`
+export const TypographyListStyled = styled(baseTypographyStyles).attrs({
+  as: 'ul',
+})`
   margin-top: 1.5rem;
   margin-left: 1.5rem;
   list-style-type: disc;
@@ -110,7 +146,9 @@ export const TypographyListStyled = styled.ul`
   }
 `;
 
-export const TypographyInlineCodeStyled = styled.code`
+export const TypographyInlineCodeStyled = styled(baseTypographyStyles).attrs({
+  as: 'code',
+})`
   position: relative;
   border-radius: 0.25rem;
   background-color: ${({ theme }) => theme.colors.muted};
@@ -120,23 +158,31 @@ export const TypographyInlineCodeStyled = styled.code`
   font-weight: 600;
 `;
 
-export const TypographyLeadStyled = styled.p`
+export const TypographyLeadStyled = styled(baseTypographyStyles).attrs({
+  as: 'p',
+})`
   font-size: 1.25rem;
   color: ${({ theme }) => theme.colors.mutedForeground};
 `;
 
-export const TypographyLargeStyled = styled.div`
+export const TypographyLargeStyled = styled(baseTypographyStyles).attrs({
+  as: 'div',
+})`
   font-size: 1.125rem;
   font-weight: 600;
 `;
 
-export const TypographySmallStyled = styled.small`
+export const TypographySmallStyled = styled(baseTypographyStyles).attrs({
+  as: 'small',
+})`
   font-size: 0.875rem;
   font-weight: 500;
   line-height: 1;
 `;
 
-export const TypographyMutedStyled = styled.p`
+export const TypographyMutedStyled = styled(baseTypographyStyles).attrs({
+  as: 'p',
+})`
   font-size: 0.875rem;
   color: ${({ theme }) => theme.colors.mutedForeground};
 `;

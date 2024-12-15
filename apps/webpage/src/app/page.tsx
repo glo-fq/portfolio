@@ -106,7 +106,9 @@ export default function Home() {
           </PaginationItem>
         </PaginationContent>
       </Pagination>
-      <Typography variant="h1">Hello world!</Typography>
+      <Typography variant="h1" color="#69caca">
+        Hello world!
+      </Typography>
     </div>
   );
 }

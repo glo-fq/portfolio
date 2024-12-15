@@ -34,6 +34,14 @@ export type TypographyProps = {
   as?: React.ElementType;
   children: React.ReactNode;
   className?: string;
+  color?: string;
+  align?: 'left' | 'center' | 'right' | 'justify';
+  weight?: string;
+  margin?: string;
+  padding?: string;
+  lineHeight?: string;
+  letterSpacing?: string;
+  decoration?: string;
 };
 
 export const Typography: React.FC<TypographyProps> = ({
@@ -41,12 +49,35 @@ export const Typography: React.FC<TypographyProps> = ({
   as: Component = variant,
   children,
   className,
+  color,
+  align,
+  weight,
+  margin,
+  padding,
+  lineHeight,
+  letterSpacing,
+  decoration,
 }) => {
+  const styleProps = {
+    color,
+    align,
+    weight,
+    margin,
+    padding,
+    lineHeight,
+    letterSpacing,
+    decoration,
+  };
+
   switch (variant) {
     case 'h1':
       return (
         <LibraryThemeProvider>
-          <TypographyH1Styled as={Component} className={className}>
+          <TypographyH1Styled
+            as={Component}
+            className={className}
+            {...styleProps}
+          >
             {children}
           </TypographyH1Styled>
         </LibraryThemeProvider>
@@ -54,7 +85,11 @@ export const Typography: React.FC<TypographyProps> = ({
     case 'h2':
       return (
         <LibraryThemeProvider>
-          <TypographyH2Styled as={Component} className={className}>
+          <TypographyH2Styled
+            as={Component}
+            className={className}
+            {...styleProps}
+          >
             {children}
           </TypographyH2Styled>
         </LibraryThemeProvider>
@@ -62,7 +97,11 @@ export const Typography: React.FC<TypographyProps> = ({
     case 'h3':
       return (
         <LibraryThemeProvider>
-          <TypographyH3Styled as={Component} className={className}>
+          <TypographyH3Styled
+            as={Component}
+            className={className}
+            {...styleProps}
+          >
             {children}
           </TypographyH3Styled>
         </LibraryThemeProvider>
@@ -70,7 +109,11 @@ export const Typography: React.FC<TypographyProps> = ({
     case 'h4':
       return (
         <LibraryThemeProvider>
-          <TypographyH4Styled as={Component} className={className}>
+          <TypographyH4Styled
+            as={Component}
+            className={className}
+            {...styleProps}
+          >
             {children}
           </TypographyH4Styled>
         </LibraryThemeProvider>
@@ -78,7 +121,11 @@ export const Typography: React.FC<TypographyProps> = ({
     case 'p':
       return (
         <LibraryThemeProvider>
-          <TypographyPStyled as={Component} className={className}>
+          <TypographyPStyled
+            as={Component}
+            className={className}
+            {...styleProps}
+          >
             {children}
           </TypographyPStyled>
         </LibraryThemeProvider>
@@ -86,7 +133,11 @@ export const Typography: React.FC<TypographyProps> = ({
     case 'blockquote':
       return (
         <LibraryThemeProvider>
-          <TypographyBlockquoteStyled as={Component} className={className}>
+          <TypographyBlockquoteStyled
+            as={Component}
+            className={className}
+            {...styleProps}
+          >
             {children}
           </TypographyBlockquoteStyled>
         </LibraryThemeProvider>
@@ -94,7 +145,11 @@ export const Typography: React.FC<TypographyProps> = ({
     case 'table':
       return (
         <LibraryThemeProvider>
-          <TypographyTableStyled as={Component} className={className}>
+          <TypographyTableStyled
+            as={Component}
+            className={className}
+            {...styleProps}
+          >
             {children}
           </TypographyTableStyled>
         </LibraryThemeProvider>
@@ -102,7 +157,11 @@ export const Typography: React.FC<TypographyProps> = ({
     case 'list':
       return (
         <LibraryThemeProvider>
-          <TypographyListStyled as={Component} className={className}>
+          <TypographyListStyled
+            as={Component}
+            className={className}
+            {...styleProps}
+          >
             {children}
           </TypographyListStyled>
         </LibraryThemeProvider>
@@ -110,7 +169,11 @@ export const Typography: React.FC<TypographyProps> = ({
     case 'inlineCode':
       return (
         <LibraryThemeProvider>
-          <TypographyInlineCodeStyled as={Component} className={className}>
+          <TypographyInlineCodeStyled
+            as={Component}
+            className={className}
+            {...styleProps}
+          >
             {children}
           </TypographyInlineCodeStyled>
         </LibraryThemeProvider>
@@ -118,7 +181,11 @@ export const Typography: React.FC<TypographyProps> = ({
     case 'lead':
       return (
         <LibraryThemeProvider>
-          <TypographyLeadStyled as={Component} className={className}>
+          <TypographyLeadStyled
+            as={Component}
+            className={className}
+            {...styleProps}
+          >
             {children}
           </TypographyLeadStyled>
         </LibraryThemeProvider>
@@ -126,7 +193,11 @@ export const Typography: React.FC<TypographyProps> = ({
     case 'large':
       return (
         <LibraryThemeProvider>
-          <TypographyLargeStyled as={Component} className={className}>
+          <TypographyLargeStyled
+            as={Component}
+            className={className}
+            {...styleProps}
+          >
             {children}
           </TypographyLargeStyled>
         </LibraryThemeProvider>
@@ -134,7 +205,11 @@ export const Typography: React.FC<TypographyProps> = ({
     case 'small':
       return (
         <LibraryThemeProvider>
-          <TypographySmallStyled as={Component} className={className}>
+          <TypographySmallStyled
+            as={Component}
+            className={className}
+            {...styleProps}
+          >
             {children}
           </TypographySmallStyled>
         </LibraryThemeProvider>
@@ -142,7 +217,11 @@ export const Typography: React.FC<TypographyProps> = ({
     case 'muted':
       return (
         <LibraryThemeProvider>
-          <TypographyMutedStyled as={Component} className={className}>
+          <TypographyMutedStyled
+            as={Component}
+            className={className}
+            {...styleProps}
+          >
             {children}
           </TypographyMutedStyled>
         </LibraryThemeProvider>
