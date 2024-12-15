@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { Button } from '../Button';
 
 export const CarouselWrapper = styled.div`
@@ -73,4 +74,14 @@ export const ButtonStyled = styled(Button)<{
             transform: translateX(-50%) rotate(90deg);
           }
         `}
+`;
+
+export const StyledArrowLeft = styled(ArrowLeft)`
+  width: 1rem;
+  height: 1rem;
+`;
+
+export const StyledArrowRight = styled(ArrowRight)`
+  width: 1rem;
+  height: 1rem;
 `;
