@@ -16,6 +16,15 @@
       "@portfolio/ui-library": ["packages/ui-library/src"]
     }
   },
-  "include": [],
-  "exclude": ["node_modules", "dist"]
+  "include": ["packages/**/src/**/*", "apps/**/src/**/*"],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "packages/**/node_modules",
+    "packages/**/dist",
+    "packages/**/build",
+    "apps/**/node_modules",
+    "apps/**/build",
+    "apps/**/dist"
+  ]
 }
