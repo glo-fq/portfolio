@@ -20,7 +20,7 @@ import {
   CarouselProps,
   useCarousel,
 } from '../../context/CarouselContext';
-import { ButtonVariant } from '../Button/Button.styled';
+import { ButtonSize, ButtonVariant } from '../Button/Button.styled';
 
 const Carousel = React.forwardRef<
   HTMLDivElement,
@@ -173,7 +173,12 @@ const CarouselPrevious = React.forwardRef<
   React.ComponentProps<typeof Button>
 >(
   (
-    { className, variant = ButtonVariant.Outline, size = 'icon', ...props },
+    {
+      className,
+      variant = ButtonVariant.Outline,
+      size = ButtonSize.Icon,
+      ...props
+    },
     ref
   ) => {
     const { orientation, scrollPrev, canScrollPrev } = useCarousel();
@@ -202,7 +207,12 @@ const CarouselNext = React.forwardRef<
   React.ComponentProps<typeof Button>
 >(
   (
-    { className, variant = ButtonVariant.Outline, size = 'icon', ...props },
+    {
+      className,
+      variant = ButtonVariant.Outline,
+      size = ButtonSize.Icon,
+      ...props
+    },
     ref
   ) => {
     const { orientation, scrollNext, canScrollNext } = useCarousel();

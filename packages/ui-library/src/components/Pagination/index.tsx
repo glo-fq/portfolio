@@ -11,6 +11,7 @@ import {
   PaginationEllipsisStyled,
 } from './Pagination.styled';
 import { LibraryThemeProvider } from '../../styles/LibraryThemeProvider';
+import { ButtonSize } from '../Button/Button.styled';
 
 const Pagination = ({ className, ...props }: React.ComponentProps<'nav'>) => (
   <LibraryThemeProvider>
@@ -43,7 +44,7 @@ type PaginationLinkProps = {
 const PaginationLink = ({
   className,
   isActive,
-  size = 'icon',
+  size = ButtonSize.Icon,
   ...props
 }: PaginationLinkProps) => (
   <PaginationLinkStyled
@@ -58,7 +59,7 @@ PaginationLink.displayName = 'PaginationLink';
 
 const PaginationPrevious = ({
   className,
-  size = 'default',
+  size = ButtonSize.Default,
   ...props
 }: React.ComponentProps<typeof PaginationLink>) => (
   <PaginationPreviousStyled className={className} size={size} {...props}>
@@ -70,7 +71,7 @@ PaginationPrevious.displayName = 'PaginationPrevious';
 
 const PaginationNext = ({
   className,
-  size = 'default',
+  size = ButtonSize.Default,
   ...props
 }: React.ComponentProps<typeof PaginationLink>) => (
   <PaginationNextStyled className={className} size={size} {...props}>

@@ -1,13 +1,13 @@
 import React from 'react';
 import { Slot } from '@radix-ui/react-slot';
-import { ButtonVariant, sizeStyles, StyledButton } from './Button.styled';
+import { ButtonSize, ButtonVariant, StyledButton } from './Button.styled';
 import { LibraryThemeProvider } from '../../styles/LibraryThemeProvider';
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   asChild?: boolean;
   variant?: ButtonVariant;
-  size?: keyof typeof sizeStyles;
+  size?: ButtonSize;
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
@@ -15,7 +15,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     {
       className,
       variant = ButtonVariant.Default,
-      size = 'default',
+      size = ButtonSize.Default,
       asChild = false,
       ...props
     },

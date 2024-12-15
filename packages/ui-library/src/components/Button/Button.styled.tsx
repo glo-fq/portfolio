@@ -57,22 +57,31 @@ export const variantStyles: Record<ButtonVariant, ReturnType<typeof css>> = {
   `,
 };
 
-export const sizeStyles = {
-  default: css`
+export enum ButtonSize {
+  Default = 'default',
+  Sm = 'sm',
+  Lg = 'lg',
+  Icon = 'icon',
+}
+
+export type ButtonSizeStyle = `${ButtonSize}`;
+
+export const sizeStyles: Record<ButtonSize, ReturnType<typeof css>> = {
+  [ButtonSize.Default]: css`
     height: 2.5rem;
     padding: 0 1rem;
     font-size: ${({ theme }) => theme.fontSizes.sm};
   `,
-  sm: css`
+  [ButtonSize.Sm]: css`
     height: 2.25rem;
     padding: 0 0.75rem;
     border-radius: 0.375rem;
   `,
-  lg: css`
+  [ButtonSize.Lg]: css`
     height: 2.75rem;
     padding: 0 2rem;
   `,
-  icon: css`
+  [ButtonSize.Icon]: css`
     height: 2.5rem;
     width: 2.5rem;
     display: flex;
