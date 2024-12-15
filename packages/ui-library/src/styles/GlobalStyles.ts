@@ -18,4 +18,11 @@ export const GlobalStyles = createGlobalStyle`
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
     border-width: 0;
+  }
+    
+  menu, ol, ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
 `;

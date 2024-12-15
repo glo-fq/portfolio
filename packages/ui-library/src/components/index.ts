@@ -17,3 +17,12 @@ export {
 } from './Card';
 export { Skeleton } from './Skeleton';
 export { Avatar, AvatarImage, AvatarFallback } from './Avatar';
+export {
+  Pagination,
+  PaginationContent,
+  PaginationEllipsis,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from './Pagination';
