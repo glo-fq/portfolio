@@ -14,35 +14,45 @@ export default {
 } as Meta;
 
 const Template: StoryFn = (args) => (
-  <Carousel {...args}>
-    <CarouselContent>
-      {Array.from({ length: 5 }).map((_, index) => (
-        <CarouselItem key={index}>
-          <div style={{ padding: '0.25rem' }}>
-            <div
-              style={{
-                display: 'flex',
-                aspectRatio: '1/1',
-                alignItems: 'center',
-                justifyContent: 'center',
-                padding: '1.5rem',
-                backgroundColor: '#f0f0f0',
-                borderRadius: '0.5rem',
-              }}
-            >
-              <span style={{ fontSize: '2.25rem', fontWeight: '600' }}>
-                {index + 1}
-              </span>
+  <div
+    style={{
+      width: '100vw',
+      height: '100vh',
+      alignItems: 'center',
+      justifyContent: 'center',
+      display: 'flex',
+      flexDirection: 'column',
+      gap: '1rem',
+    }}
+  >
+    <Carousel style={{ width: '100%', maxWidth: '20rem' }} {...args}>
+      <CarouselContent>
+        {Array.from({ length: 5 }).map((_, index) => (
+          <CarouselItem key={index}>
+            <div style={{ padding: '0.25rem' }}>
+              <div
+                style={{
+                  display: 'flex',
+                  aspectRatio: '1/1',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  padding: '1.5rem',
+                }}
+              >
+                <span style={{ fontSize: '2.25rem', fontWeight: '600' }}>
+                  {index + 1}
+                </span>
+              </div>
             </div>
-          </div>
-        </CarouselItem>
-      ))}
-    </CarouselContent>
-    <div>
-      <CarouselPrevious />
-      <CarouselNext />
-    </div>
-  </Carousel>
+          </CarouselItem>
+        ))}
+      </CarouselContent>
+      <div>
+        <CarouselPrevious />
+        <CarouselNext />
+      </div>
+    </Carousel>
+  </div>
 );
 
 export const Default = Template.bind({});
