@@ -20,6 +20,7 @@ import {
   CarouselProps,
   useCarousel,
 } from '../../context/CarouselContext';
+import { ButtonVariant } from '../Button/Button.styled';
 
 const Carousel = React.forwardRef<
   HTMLDivElement,
@@ -170,49 +171,59 @@ CarouselItem.displayName = 'CarouselItem';
 const CarouselPrevious = React.forwardRef<
   HTMLButtonElement,
   React.ComponentProps<typeof Button>
->(({ className, variant = 'outline', size = 'icon', ...props }, ref) => {
-  const { orientation, scrollPrev, canScrollPrev } = useCarousel();
+>(
+  (
+    { className, variant = ButtonVariant.Outline, size = 'icon', ...props },
+    ref
+  ) => {
+    const { orientation, scrollPrev, canScrollPrev } = useCarousel();
 
-  return (
-    <ButtonStyled
-      ref={ref}
-      variant={variant}
-      size={size}
-      orientation={orientation ?? 'horizontal'}
-      className={className}
-      disabled={!canScrollPrev}
-      onClick={scrollPrev}
-      {...props}
-    >
-      <StyledArrowLeft />
-      <span className="sr-only">Previous slide</span>
-    </ButtonStyled>
-  );
-});
+    return (
+      <ButtonStyled
+        ref={ref}
+        variant={variant}
+        size={size}
+        orientation={orientation ?? 'horizontal'}
+        className={className}
+        disabled={!canScrollPrev}
+        onClick={scrollPrev}
+        {...props}
+      >
+        <StyledArrowLeft />
+        <span className="sr-only">Previous slide</span>
+      </ButtonStyled>
+    );
+  }
+);
 CarouselPrevious.displayName = 'CarouselPrevious';
 
 const CarouselNext = React.forwardRef<
   HTMLButtonElement,
   React.ComponentProps<typeof Button>
->(({ className, variant = 'outline', size = 'icon', ...props }, ref) => {
-  const { orientation, scrollNext, canScrollNext } = useCarousel();
+>(
+  (
+    { className, variant = ButtonVariant.Outline, size = 'icon', ...props },
+    ref
+  ) => {
+    const { orientation, scrollNext, canScrollNext } = useCarousel();
 
-  return (
-    <ButtonStyled
-      ref={ref}
-      variant={variant}
-      size={size}
-      orientation={orientation ?? 'horizontal'}
-      className={className}
-      disabled={!canScrollNext}
-      onClick={scrollNext}
-      {...props}
-    >
-      <StyledArrowRight />
-      <span className="sr-only">Next slide</span>
-    </ButtonStyled>
-  );
-});
+    return (
+      <ButtonStyled
+        ref={ref}
+        variant={variant}
+        size={size}
+        orientation={orientation ?? 'horizontal'}
+        className={className}
+        disabled={!canScrollNext}
+        onClick={scrollNext}
+        {...props}
+      >
+        <StyledArrowRight />
+        <span className="sr-only">Next slide</span>
+      </ButtonStyled>
+    );
+  }
+);
 CarouselNext.displayName = 'CarouselNext';
 
 export {
