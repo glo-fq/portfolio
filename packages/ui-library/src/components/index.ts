@@ -27,3 +27,5 @@ export {
   PaginationPrevious,
 } from './Pagination';
 export { Typography } from './Typography';
+export { Header } from './Header';
+export { Box } from './Box';
