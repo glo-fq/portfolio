@@ -1,6 +1,7 @@
 import React from 'react';
 import { LibraryThemeProvider } from '../../styles/LibraryThemeProvider';
 import { HeaderRoot } from './Header.styled';
+import { omit } from 'lodash';
 
 export interface HeaderProps extends React.HTMLAttributes<HTMLElement> {
   backgroundColor?: string;
@@ -15,6 +16,7 @@ export interface HeaderProps extends React.HTMLAttributes<HTMLElement> {
     | 'space-between'
     | 'space-around';
   className?: string;
+  sticky?: boolean; // Add sticky prop
 }
 
 const Header: React.FC<HeaderProps> = ({
@@ -26,8 +28,19 @@ const Header: React.FC<HeaderProps> = ({
   alignItems,
   justifyContent,
   className,
+  sticky, // Add sticky prop
   ...props
 }) => {
+  const headerProps = omit(props, [
+    'backgroundColor',
+    'textColor',
+    'height',
+    'padding',
+    'alignItems',
+    'justifyContent',
+    'sticky', // Add sticky to omit list
+  ]);
+
   return (
     <LibraryThemeProvider>
       <HeaderRoot
@@ -38,7 +51,8 @@ const Header: React.FC<HeaderProps> = ({
         alignItems={alignItems}
         justifyContent={justifyContent}
         className={className}
-        {...props}
+        sticky={sticky} // Pass sticky prop
+        {...headerProps}
       >
         {children}
       </HeaderRoot>
