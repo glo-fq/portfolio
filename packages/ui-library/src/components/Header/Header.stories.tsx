@@ -48,22 +48,13 @@ Custom.args = {
   justifyContent: 'space-between',
 };
 
-export const Sticky = Template.bind({});
-Sticky.args = {
-  backgroundColor: '#333',
-  textColor: '#fff',
-  height: '5rem',
-  padding: '0 2rem',
-  alignItems: 'center',
-  justifyContent: 'space-between',
-  sticky: true, // Set sticky to true
-};
-
 const StickyTemplate: StoryFn<HeaderProps> = (args) => (
   <div style={{ height: '200vh' }}>
     <Header {...args}>Sticky Header Content</Header>
     <div style={{ padding: '1rem' }}>
-      Scroll down to see the sticky header in action.
+      Scroll down to see the sticky header in action. Make sure that no parent
+      has overflow: hidden, be it x or y, because it will prevent the sticky
+      header from working.
     </div>
   </div>
 );
