@@ -1,3 +1,4 @@
+import { ButtonVariant } from './Button/Button.styled';
 export { Button } from './Button';
 export { Alert, AlertTitle, AlertDescription } from './Alert';
 export {
@@ -29,3 +30,5 @@ export {
 export { Typography } from './Typography';
 export { Header } from './Header';
 export { Box } from './Box';
+export { ButtonVariant, ButtonSize } from './Button/Button.styled';
+export { Footer } from './Footer';

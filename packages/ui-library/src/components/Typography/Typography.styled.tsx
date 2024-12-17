@@ -63,6 +63,24 @@ export const TypographyH4Styled = styled(baseTypographyStyles).attrs({
   line-height: 1.1;
 `;
 
+export const TypographyH5Styled = styled(baseTypographyStyles).attrs({
+  as: 'h5',
+})`
+  scroll-margin-top: 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.1;
+`;
+
+export const TypographyH6Styled = styled(baseTypographyStyles).attrs({
+  as: 'h6',
+})`
+  scroll-margin-top: 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.1;
+`;
+
 export const TypographyPStyled = styled(baseTypographyStyles).attrs({
   as: 'p',
 })`
@@ -185,4 +203,18 @@ export const TypographyMutedStyled = styled(baseTypographyStyles).attrs({
 })`
   font-size: 0.875rem;
   color: ${({ theme }) => theme.colors.mutedForeground};
+`;
+
+export const TypographyBody1Styled = styled(baseTypographyStyles).attrs({
+  as: 'p',
+})`
+  font-size: 1rem;
+  line-height: 1.5;
+`;
+
+export const TypographyBody2Styled = styled(baseTypographyStyles).attrs({
+  as: 'p',
+})`
+  font-size: 0.875rem;
+  line-height: 1.5;
 `;

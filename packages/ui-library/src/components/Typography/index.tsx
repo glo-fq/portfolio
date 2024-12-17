@@ -4,6 +4,8 @@ import {
   TypographyH2Styled,
   TypographyH3Styled,
   TypographyH4Styled,
+  TypographyH5Styled,
+  TypographyH6Styled,
   TypographyPStyled,
   TypographyBlockquoteStyled,
   TypographyTableStyled,
@@ -13,6 +15,8 @@ import {
   TypographyLargeStyled,
   TypographySmallStyled,
   TypographyMutedStyled,
+  TypographyBody1Styled,
+  TypographyBody2Styled,
 } from './Typography.styled';
 import { LibraryThemeProvider } from '../../styles/LibraryThemeProvider';
 
@@ -22,6 +26,8 @@ export type TypographyProps = {
     | 'h2'
     | 'h3'
     | 'h4'
+    | 'h5'
+    | 'h6'
     | 'p'
     | 'blockquote'
     | 'table'
@@ -30,7 +36,9 @@ export type TypographyProps = {
     | 'lead'
     | 'large'
     | 'small'
-    | 'muted';
+    | 'muted'
+    | 'body1'
+    | 'body2';
   as?: React.ElementType;
   children: React.ReactNode;
   className?: string;
@@ -116,6 +124,30 @@ export const Typography: React.FC<TypographyProps> = ({
           >
             {children}
           </TypographyH4Styled>
+        </LibraryThemeProvider>
+      );
+    case 'h5':
+      return (
+        <LibraryThemeProvider>
+          <TypographyH5Styled
+            as={Component}
+            className={className}
+            {...styleProps}
+          >
+            {children}
+          </TypographyH5Styled>
+        </LibraryThemeProvider>
+      );
+    case 'h6':
+      return (
+        <LibraryThemeProvider>
+          <TypographyH6Styled
+            as={Component}
+            className={className}
+            {...styleProps}
+          >
+            {children}
+          </TypographyH6Styled>
         </LibraryThemeProvider>
       );
     case 'p':
@@ -224,6 +256,30 @@ export const Typography: React.FC<TypographyProps> = ({
           >
             {children}
           </TypographyMutedStyled>
+        </LibraryThemeProvider>
+      );
+    case 'body1':
+      return (
+        <LibraryThemeProvider>
+          <TypographyBody1Styled
+            as={Component}
+            className={className}
+            {...styleProps}
+          >
+            {children}
+          </TypographyBody1Styled>
+        </LibraryThemeProvider>
+      );
+    case 'body2':
+      return (
+        <LibraryThemeProvider>
+          <TypographyBody2Styled
+            as={Component}
+            className={className}
+            {...styleProps}
+          >
+            {children}
+          </TypographyBody2Styled>
         </LibraryThemeProvider>
       );
     default:

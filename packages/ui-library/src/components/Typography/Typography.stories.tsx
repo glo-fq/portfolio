@@ -14,6 +14,8 @@ export default {
           'h2',
           'h3',
           'h4',
+          'h5',
+          'h6',
           'p',
           'blockquote',
           'table',
@@ -23,6 +25,8 @@ export default {
           'large',
           'small',
           'muted',
+          'body1',
+          'body2',
         ],
       },
     },
@@ -58,6 +62,16 @@ Heading4.args = {
   variant: 'h4',
 };
 
+export const Heading5 = Template.bind({});
+Heading5.args = {
+  variant: 'h5',
+};
+
+export const Heading6 = Template.bind({});
+Heading6.args = {
+  variant: 'h6',
+};
+
 export const Blockquote = Template.bind({});
 Blockquote.args = {
   variant: 'blockquote',
@@ -86,4 +100,14 @@ Small.args = {
 export const Muted = Template.bind({});
 Muted.args = {
   variant: 'muted',
+};
+
+export const Body1 = Template.bind({});
+Body1.args = {
+  variant: 'body1',
+};
+
+export const Body2 = Template.bind({});
+Body2.args = {
+  variant: 'body2',
 };
