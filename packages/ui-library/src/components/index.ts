@@ -1,6 +1,11 @@
-import { ButtonVariant } from './Button/Button.styled';
 export { Button } from './Button';
 export { Alert, AlertTitle, AlertDescription } from './Alert';
+export {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from './Accordion';
 export {
   Carousel,
   CarouselContent,
