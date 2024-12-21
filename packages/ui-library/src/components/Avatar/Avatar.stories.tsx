@@ -5,14 +5,23 @@ import { Avatar, AvatarImage, AvatarFallback } from './index';
 export default {
   title: 'Components/Avatar',
   component: Avatar,
+  argTypes: {
+    src: { control: 'text' },
+    alt: { control: 'text' },
+    fallback: { control: 'text' },
+  },
 } as Meta;
 
-const Template: StoryFn = (args) => (
+const Template: StoryFn = ({ src, alt, fallback, ...args }) => (
   <Avatar {...args}>
-    <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
-    <AvatarFallback>CN</AvatarFallback>
+    <AvatarImage src={src} alt={alt} />
+    <AvatarFallback>{fallback}</AvatarFallback>
   </Avatar>
 );
 
 export const Default = Template.bind({});
-Default.args = {};
+Default.args = {
+  src: 'https://github.com/shadcn.png',
+  alt: '@shadcn',
+  fallback: 'CN',
+};

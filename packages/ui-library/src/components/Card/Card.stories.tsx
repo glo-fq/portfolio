@@ -12,22 +12,39 @@ import {
 export default {
   title: 'Components/Card',
   component: Card,
+  argTypes: {
+    title: { control: 'text' },
+    description: { control: 'text' },
+    content: { control: 'text' },
+    footer: { control: 'text' },
+  },
 } as Meta;
 
-const Template: StoryFn = (args) => (
+const Template: StoryFn = ({
+  title,
+  description,
+  content,
+  footer,
+  ...args
+}) => (
   <Card {...args}>
     <CardHeader>
-      <CardTitle>Card Title</CardTitle>
-      <CardDescription>Card Description</CardDescription>
+      <CardTitle>{title}</CardTitle>
+      <CardDescription>{description}</CardDescription>
     </CardHeader>
     <CardContent>
-      <p>This is the card content.</p>
+      <p>{content}</p>
     </CardContent>
     <CardFooter>
-      <p>Card Footer</p>
+      <p>{footer}</p>
     </CardFooter>
   </Card>
 );
 
 export const Default = Template.bind({});
-Default.args = {};
+Default.args = {
+  title: 'Card Title',
+  description: 'Card Description',
+  content: 'This is the card content.',
+  footer: 'Card Footer',
+};
