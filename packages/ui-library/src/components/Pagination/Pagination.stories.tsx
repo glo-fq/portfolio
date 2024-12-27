@@ -13,34 +13,75 @@ import {
 export default {
   title: 'Components/Pagination',
   component: Pagination,
+  argTypes: {
+    size: {
+      control: {
+        type: 'select',
+        options: ['small', 'default', 'large'],
+      },
+    },
+    isActive: { control: 'boolean' },
+    pageCount: {
+      control: {
+        type: 'number',
+        min: 1,
+        max: 20,
+      },
+    },
+  },
 } as Meta;
 
 const Template: StoryFn = (args) => (
   <Pagination {...args}>
     <PaginationContent>
       <PaginationItem>
-        <PaginationPrevious href="#" />
+        <PaginationPrevious href="#" size={args.size} />
       </PaginationItem>
-      <PaginationItem>
-        <PaginationLink href="#">1</PaginationLink>
-      </PaginationItem>
-      <PaginationItem>
-        <PaginationLink href="#" isActive>
-          2
-        </PaginationLink>
-      </PaginationItem>
-      <PaginationItem>
-        <PaginationLink href="#">3</PaginationLink>
-      </PaginationItem>
+      {[...Array(args.pageCount)].map((_, index) => (
+        <PaginationItem key={index}>
+          <PaginationLink
+            href="#"
+            size={args.size}
+            isActive={index === 1 && args.isActive}
+          >
+            {index + 1}
+          </PaginationLink>
+        </PaginationItem>
+      ))}
       <PaginationItem>
         <PaginationEllipsis />
       </PaginationItem>
       <PaginationItem>
-        <PaginationNext href="#" />
+        <PaginationNext href="#" size={args.size} />
       </PaginationItem>
     </PaginationContent>
   </Pagination>
 );
 
 export const Default = Template.bind({});
-Default.args = {};
+Default.args = {
+  size: 'default',
+  isActive: false,
+  pageCount: 5,
+};
+
+export const Small = Template.bind({});
+Small.args = {
+  size: 'small',
+  isActive: false,
+  pageCount: 5,
+};
+
+export const Large = Template.bind({});
+Large.args = {
+  size: 'large',
+  isActive: false,
+  pageCount: 5,
+};
+
+export const ActivePage = Template.bind({});
+ActivePage.args = {
+  size: 'default',
+  isActive: true,
+  pageCount: 5,
+};
